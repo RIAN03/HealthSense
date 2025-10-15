@@ -1,0 +1,7 @@
+{
+  "name": "HealthSense",
+  "description": "A portable digital hospital that continuously monitors user health metrics through smart devices, detects irregularities, and provides early intervention guidance.",
+  "requestFramePermissions": [
+    "bluetooth"
+  ]
+}
