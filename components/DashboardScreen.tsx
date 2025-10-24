@@ -121,7 +121,15 @@ const DashboardScreen: React.FC<DashboardScreenProps> = ({ setView, vitals, addA
   };
 
   useEffect(() => {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const apiKey = import.meta.env.VITE_GOOGLE_AI_API_KEY;
+
+    if (!apiKey) {
+      setAiSummary("Add your Google AI API key to enable AI insights.");
+      setIsSummaryLoading(false);
+      return;
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
 
     const getFullMetricsString = () => {
         const primaryVitalsString = vitals
