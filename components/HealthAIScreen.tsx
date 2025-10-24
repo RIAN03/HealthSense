@@ -23,7 +23,14 @@ const HealthAIScreen: React.FC<HealthAIScreenProps> = ({ setView, healthData, us
   useEffect(() => {
     const initChat = () => {
       try {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const apiKey = import.meta.env.VITE_GOOGLE_AI_API_KEY;
+
+        if (!apiKey) {
+          setMessages(prev => [...prev, { sender: 'ai', text: "Google AI API key is not configured. Please add it to continue." }]);
+          return;
+        }
+
+        const ai = new GoogleGenAI({ apiKey });
         
         const currentVitalsSummary = Object.keys(healthData)
             .filter((key) => healthData[key].value && healthData[key].value.trim() !== '--')
