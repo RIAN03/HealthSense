@@ -110,7 +110,7 @@ const AddDataScreen: React.FC<AddDataScreenProps> = ({ setView, onSave, primaryV
                 value={selectedValue}
                 onChange={(e) => setSelectedValue(e.target.value)}
                 placeholder="Enter value"
-                className="w-full p-4 bg-transparent text-lg font-semibold focus:outline-none"
+                className="w-full p-4 bg-transparent text-lg font-semibold focus:outline-none text-text-dark-primary"
                 autoFocus
               />
               <span className="p-4 text-text-dark-secondary font-medium">{selectedMetric.unit}</span>
